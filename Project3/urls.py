@@ -20,14 +20,15 @@ from django.contrib.auth.views import login
 from django.http import request
 
 import loginapp
-from loginapp.views import loginreq, loginform, auth, login_reqq
+from loginapp.views import auth, signup, home, otp, login_login
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^loginreq/$', loginreq),
-    url(r'^loginform/$', loginform),
-    url(r'^login_reqq/$',login_reqq),
-    url(r'^auth/$',auth)
+    url(r'^otp/$', otp),
+    url(r'^signup/$',signup ),
+    url(r'^home/$',home),
+    url(r'^auth/$',auth),
+    url(r'^login_login/$',login_login)
 
 
 ]
