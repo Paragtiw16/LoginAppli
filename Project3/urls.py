@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 # """
 # import loginform
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.contrib import admin
 from django.contrib.auth.views import login
 from django.http import request
@@ -24,11 +24,13 @@ from loginapp.views import auth, signup, home, otp, login_login
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^otp/$', otp),
-    url(r'^signup/$',signup ),
-    url(r'^home/$',home),
-    url(r'^auth/$',auth),
-    url(r'^login_login/$',login_login)
+    url(r'^form/',include('loginapp.urls')),
+    # url(r'^otp/$', otp),
+    # url(r'^signup/$',signup ),
+    # url(r'^home/$',home),
+    # url(r'^auth/$',auth),
+    # url(r'^login_login/$',login_login),
+    url(r'^ajax/',include('ajaxlogin.urls'))
 
 
 ]

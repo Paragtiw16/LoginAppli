@@ -1,17 +1,16 @@
 <html>
-   {% load staticfiles %}
- <script type="text/javascript" src="{% static 'js/signup.js' %} "></script>
+
 
 <body>
-{#  <form>#}
-  <form action='/otp/' method="POST">
+
+  <form action='/form/otp/' method="POST">
 
       <p> Message:{{ Message }}</p>
-      Username:<input type="text"  placeholder="Enter Username" id="uname" name="uname"><br/>
-      Password:<input type="password"  placeholder="Enter Password" id="pwd" name="pwd"><br/>
-      Email:<input type="email" placeholder="Enter Email"  id="email" name="email" ><br/>
-      Contact no:<input type="number" placeholder="Enter Number" id="number" name="number"><br/>
-               <input type="submit" onclick="click1()" />
+      Username:<input type="text"  placeholder="Enter Username"  name="uname"><br/>
+      Password:<input type="password"  placeholder="Enter Password"  name="pwd"><br/>
+      Email:<input type="email" placeholder="Enter Email"  name="email" ><br/>
+      Contact no:<input type="number" placeholder="Enter Number"  name="number"><br/>
+               <input type="submit" value="Submit">
   </form>
 
 </body>

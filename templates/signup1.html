@@ -1,0 +1,39 @@
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+</head>
+   {% load staticfiles %}
+ <script type="text/javascript" src="{% static 'js/signup.js' %} "></script>
+<body>
+{#  <form>#}
+{#  <form action='/otp/' method="POST">#}
+
+      <p> Message:{{ Message }}</p>
+      Username:<input type="text"  placeholder="Enter Username" id="uname" name="uname"><br/>
+      Password:<input type="password"  placeholder="Enter Password" id="pwd" name="pwd"><br/>
+      Email:<input type="email" placeholder="Enter Email"  id="email" name="email" ><br/>
+      Contact no:<input type="number" placeholder="Enter Number" id="number" name="number"><br/>
+               <input type="submit" onclick="click1()" />
+{#  </form>#}
+
+</body>
+
+
+
+{#      <script>#}
+{#function click1()#}
+{#{#}
+{#   var name = document.getElementById('uname').value;#}
+{##}
+{#   var pwd = document.getElementById('pwd').value;#}
+{#   var email=document.getElementById('email').value;#}
+{#   alert(name);#}
+{#   alert(pwd);#}
+{#   alert(email);#}
+{#}#}
+{#</script>#}
+
+
+</html>

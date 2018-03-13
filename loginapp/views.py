@@ -30,17 +30,16 @@ def otp(request):
             otp = random.randint(1, 21) * 5
             break
 
-            # email = EmailMessage('Subject', otpname, to=['get_email'])
-            # email.send()
+
         from django.core.mail import send_mail
         send_mail('test email', str(otp), 'Paragtiwari314@gmail.com', [get_email])
 
 
-        # key = 'secret'
-        # encoded = jwt.encode({'pwd': 'get_pwd'}, key, algorithm='HS256')
+        key = 'secret'
+        encoded = jwt.encode({'pwd': get_pwd}, key, algorithm='HS256')
         # decoded = jwt.decode(encoded, key, algorithms='HS256')
-        # {'pwd': 'get_pwd'}
-        login_details = Login.objects.create(username=get_uname,password= get_pwd,email= get_email
+        {'pwd': 'get_pwd'}
+        login_details = Login.objects.create(username=get_uname,password= encoded,email= get_email
                                              ,contactno=get_number)
         # login_details =Login(username=get_uname,password= password,email= email)
         login_details.save()
@@ -95,14 +94,21 @@ def auth(request):
          # email=data.email
          get_email=request.POST.get('email')
          get_pswd=request.POST.get('pwd')
+         key = 'secret'
+         encoded = jwt.encode({'pwd': get_pswd}, key, algorithm='HS256')
          # get_number=request.POST.get(no)
-         if email==get_email and pssword==get_pswd:
+         print(pssword)
+         print(encoded)
+         if email==get_email and pssword==encoded:
              print("true")
+             print(email)
+             print(get_email)
+
              return render(request, "home.html",{"Username":user,"Email":email,
                                                                         "Contact_no":no} )
          else:
              msg="Please enter Correct Details"
-             return render(request, "Login.html",{"Message":msg})
+             return render(request, "Login.html",   {"Message":msg})
 
 
 
