@@ -5,7 +5,8 @@ from django.shortcuts import render
 from django.utils.crypto import random
 from django.views.decorators.csrf import csrf_exempt
 
-from ajaxlogin.models import Login
+# from ajaxlogin.models import Login
+from ajaxlogin.models import Logins
 
 
 @csrf_exempt
@@ -41,14 +42,16 @@ def signup(request):
         # {'pwd': 'get_pwd'}\
         try:
 
-                    login_details = Login.objects.create(username=get_uname,password= get_pwd,
+            login_details = Logins.objects.create(username=get_uname,password= get_pwd,
                                                          email= get_email,contactno=get_number)
-                    login_details.save()
+            # login_details.save()
         except Exception,e:
             print("Our Error=",str(e))
         # login_details =Login(username=get_uname,password= password,email= email)
-        login_details.save()
+        # login_details.save()
         print("Number=",get_number)
+        # JSON={"Email": get_email}
+        # print("JJJJJJJJJJJJJSSSSSSSSSSSSOOOOONNNNN=",JSON)
         return render(request, "otp1.html", {"Email": get_email})
 
 
@@ -110,7 +113,7 @@ def login_login(request):
 @csrf_exempt
 def auth(request):
      if request.method=="POST":
-         data = Login.objects.all()
+         data = Logins.objects.all()
          for i in data:
              email=(i.email)
              pssword =(i.password)

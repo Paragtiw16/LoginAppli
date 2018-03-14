@@ -1,11 +1,43 @@
 <html>
+<style>
+
+    input[type=button], input[type=text],input[type=submit],input[type=password] {
+               width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+                background-color: #3CBC8D;
+            color: white;
+                background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+}
+
+</style>
 <body>
 
+   <h1>LOGIN FORM</h1><br/>
    Message:{{ Message }}
-   <form action="form/auth/" method="POST">
-       Email:<input type="text" name="email"><br/>
-       Password:<input type="password" name="pwd"><br/>
-                <input type="submit" value="Submit">
+   <form action="/form/auth/" method="POST">
+                    <label for="email">Email</label>
+                    <input type="text" id="email"name="email"><br/>
+                    <label for="pwd">Password</label>
+                    <input type="password" id="pwd" name="pwd"><br/>
+
+                     <input type="submit" value="Submit">
+                     <span class="psw">Forgot <a href="/form/recovery/">password?</a></span>
+
+{# href="/product/?sku={{ sku }}"#}
+{#                <input type="forgot your password?"> <a href="/form/auth">here</a>#}
+{#                  <span class="psw">Forgot <a href="/form/password/?email={{ email }}">#}
+{#                      password?#}
+{#                  </a></span>#}
+
+
    </form>
 
 </body>

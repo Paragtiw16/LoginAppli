@@ -7,6 +7,7 @@
 # from django.views.decorators.csrf import csrf_exempt
 # import render as render
 # from random import random
+import json
 
 import jwt
 from django.core.mail.message import EmailMessage
@@ -115,3 +116,58 @@ def auth(request):
 @csrf_exempt
 def login_login(request):
     return render(request,"Login.html")
+
+def recovery(request):
+    # print("HHHHHEEEEEEEEEEELLLLLLLLLLLLLLLLLOOOOO")
+    # if request.method=="GET":
+    #     get_email = request.GET.get('email')
+    #     print("MERA EMAIL=",get_email)
+    #     obj = Login.objects.get(Email=get_email)
+    #     password=obj.Password
+    #     print(password)
+    #     from django.core.mail import send_mail
+    #     send_mail('test email', password, 'Paragtiwari314@gmail.com', [get_email])
+    #
+    #     return render(request, "Login.html")
+
+      return render(request, "Forgot.html")
+
+@csrf_exempt
+def password(request):
+    print("HHHHHEEEEEEEEEEELLLLLLLLLLLLLLLLLOOOOO")
+    if request.method == "POST":
+        get_email = request.POST.get('email')
+        print("MERA EMAIL=", get_email)
+        obj = Login.objects.get(email=get_email)
+        Password = obj.password
+        print(Password)
+        key = 'secret'
+        # encoded = jwt.encode({'pwd': get_pwd}, key, algorithm='HS256')
+        decoded = jwt.decode(Password, key, algorithms='HS256')
+        print("`Mera Password=",decoded)
+        # d=({u'pwd': u'ppoiuyt'})
+        # var=json.loads('{"pwd":decoded}')
+        var=decoded['pwd']
+
+
+        print("Password==========",var)
+        # d = {'pwd': decoded}
+
+        # for key, value in d.items():
+        #
+        #        print key, value
+        try:
+
+            from django.core.mail import send_mail
+            send_mail('test email', var, 'Paragtiwari314@gmail.com', [get_email])
+        except Exception, e:
+            print("Apna  Error=", str(e))
+
+        return render(request, "Login.html")
+
+
+
+
+
+
+

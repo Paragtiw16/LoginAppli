@@ -7,7 +7,7 @@ function click2() {
     alert(get_email);
 
     $.ajax({
-        url: '/home/',
+        url: '/ajax/home/',
         type: "POST",
         data: {"Otp": otp, "Email": get_email},
         dataType: 'application/json; charset=utf-8',
