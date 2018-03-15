@@ -9,6 +9,18 @@ function click1() {
         method: 'POST',
         data: {"name": name, "password": pwd, "Email": email, "no": number},
         // dataType: 'application/json; charset=utf-8',
-        // success:{}
+         success:function (text) {
+                   alert("Mmmmmmmeeeeessssaaagggeeee");
+                   console.log(text)
+                    alert(text)
+                   if(text.Success==true)
+                   {
+                       window.location.href="/ajax/otppage"
+                   }
+
+
+
+
+         }
     });
 }
