@@ -1,17 +1,17 @@
 function click2() {
     var get_otp = document.getElementById('otp').value;
-
-    // var get_email = document.getElementById('email').value;
+    var myemail  = document.getElementById('emmail').value;
 
     alert(get_otp);
-    // alert(get_email);
+    console.log(myemail);
+    // alert(myemail);
 
     $.ajax({
 
         url: '/ajax/otppage/',
         method: "POST",
         // data: {"Otp": otp, "Email": get_email},
-        data:{"Otp":get_otp},
+        data:{"Otp":get_otp,"Email":myemail},
 
         // dataType: 'application/json; charset=utf-8',
         success:function (script)
@@ -19,13 +19,17 @@ function click2() {
             alert("HHHHHHHHEEEEEEEELLLLLLLLOOOOOOOOO");
             console.log(script)
                     alert(script)
+                    alert(script.Success)
              if(script.Success==true)
                    {
-                       window.location.href="/ajax/home"
+                       console.log("Insideeeee homeeeee")
+                       window.location.href="/ajax/home";
                    }
-             else (script.Success==False)
+             else
                     {
-                        window.location.href="/ajax/otppage"
+                        console.log(script.Message);
+                        get_msg=script.Message;
+                        window.location.href="/ajax/otppage?Message="+get_msg
                         
                       }
 

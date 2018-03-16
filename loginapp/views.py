@@ -26,14 +26,14 @@ def otp(request):
         get_email=request.POST.get('email')
         get_number =request.POST.get('number')
         global  get_uname,get_pwd,get_number,get_email
-        for x in range(1000):
+        for x in range(1000,9999):
             global otp
-            otp = random.randint(1, 21) * 5
+            otp = random.randint(1000,9999)
             break
 
 
         from django.core.mail import send_mail
-        send_mail('test email', str(otp), 'Paragtiwari314@gmail.com', [get_email])
+        send_mail('Your OTP is', str(otp), 'Paragtiwari314@gmail.com', [get_email])
 
 
         key = 'secret'

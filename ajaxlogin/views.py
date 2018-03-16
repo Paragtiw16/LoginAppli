@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 # from ajaxlogin.models import Login
 from ajaxlogin.models import Logins
+from ajaxlogin.models import New
 from django.http import JsonResponse
 @csrf_exempt
 def signup(request):
@@ -22,16 +23,16 @@ def signup(request):
         print("get_uname ", get_uname)
         print("get_email ", get_email)
         # global  get_uname,get_pwd,get_number,get_email
-        for x in range(1000):
-            global otp
-            otp = random.randint(1, 21) * 5
+        for x in range(1000,9999):
+            # global otp
+            Otp = random.randint(1000,9999)
             break
-            print(otp)
+            print(Otp)
 
             # email = EmailMessage('Subject', otpname, to=['get_email'])
             # email.send()
         from django.core.mail import send_mail
-        send_mail('test email', str(otp), 'Paragtiwari314@gmail.com', [get_email])
+        send_mail('test email', str(Otp), 'Paragtiwari314@gmail.com', [get_email])
 
         # key = 'secret'
         # encoded = jwt.encode({'pwd': 'get_pwd'}, key, algorithm='HS256')
@@ -41,7 +42,11 @@ def signup(request):
 
             login_details = Logins.objects.create(username=get_uname, password=get_pwd,
                                                   email=get_email, contactno=get_number)
+            match_details=New.objects.create(otp=Otp,new=login_details)
+
+            
             # login_details.save()
+
         except Exception, e:
             print("Our Error=", str(e))
         # login_details =Login(username=get_uname,password= password,email= email)
@@ -59,35 +64,48 @@ def signup(request):
         # return render(request, "otp1.html")
     # return JsonResponse({"Success":success,"Email":get_email})
 
-    return JsonResponse({"Email":get_email, "Success": True, "Otp": otp})
+    return JsonResponse({"Email":get_email, "Success": True})
 
 @csrf_exempt
 def otppage(request):
     if request.method == "GET":
         print('OOOOOOOOOOTTTTTTTTTTPPPPPPPP')
+        get_email = request.GET.get('Email')
+        mymsg =request.GET.get('Message')
 
-
-        return render(request, "otp1.html")
+        return render(request, "otp1.html",{"Email": get_email,"Message": mymsg})
 
     elif request.method == "POST":
         myotp = request.POST.get('Otp')
+        myemail =request.POST.get('Email')
         print("My Otp========",myotp)
-        if (myotp == str(otp)):
-            # return render(request, "home1.html")
-            return JsonResponse({"Message": "success", "Success": True})
-        else:
-            msg = "Please enter correct otp"
+        if Logins.objects.filter(email=myemail).exists():
 
-            # return render(request, "otp1.html", {"Message": msg})
-            return JsonResponse({"Message": msg,"Success": False})
+            print("Inside ifffffffffff")
+            data1 = Logins.objects.get(email=myemail)
+            print("DDDDDDDDDDDDDDDDDDDAAAAATTTTAAAAAA111111",data1)
+            data2 =New.objects.get(new=data1)
+            dbotp =data2.otp
+            print("MMMMMMMMMYYYYYYYYYYYOOOOTTTTTTPPPPPP",dbotp)
+            print("MMMMMMMMMYYYYYYYYYYYOOOOTTTTTTPPPPPP",int(myotp))
+            if int(myotp)==dbotp:
+                print("Inside Trrrrrrrrrrrruuuuuuuueeeeeeeeeeee")
+                return JsonResponse({"Message": "success", "Success": True})
+            else:
+                print("Inside Fallllllssssssseeeeeee")
+                msg = "Please enter correct otp"
+                return JsonResponse({"Message": msg, "Success": False})
+
+
+
 
 @csrf_exempt
 def home(request):
     if request.method == "GET":
-        print('OOOOOOOOOOTTTTTTTTTTPPPPPPPP')
+        # print('OOOOOOOOOOTTTTTTTTTTPPPPPPPP')
+         print("Insideeeeeeeeeee HOOOOOOOOMEEEEEE")
 
-
-        return render(request, "home1.html")
+         return render(request, "home1.html")
 
 
 @csrf_exempt

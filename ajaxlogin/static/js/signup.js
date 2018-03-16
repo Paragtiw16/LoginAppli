@@ -11,12 +11,17 @@ function click1() {
         // dataType: 'application/json; charset=utf-8',
          success:function (text) {
                    alert("Mmmmmmmeeeeessssaaagggeeee");
-                   console.log(text)
-                    alert(text)
+                   console.log(text);
+                    alert(text);
                    if(text.Success==true)
                    {
-                       window.location.href="/ajax/otppage"
+                       console.log(text.Email);
+                       get_email=text.Email;
+                       window.location.href="/ajax/otppage?Email="+get_email
+                       // "Email":get_email
+
                    }
+
 
 
 
