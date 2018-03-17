@@ -17,19 +17,27 @@ function click2() {
         success:function (script)
         {
             alert("HHHHHHHHEEEEEEEELLLLLLLLOOOOOOOOO");
-            console.log(script)
-                    alert(script)
-                    alert(script.Success)
+            console.log(script);
+                    alert(script);
+                    alert(script.Success);
              if(script.Success==true)
                    {
-                       console.log("Insideeeee homeeeee")
-                       window.location.href="/ajax/home";
+                       console.log("Insideee successsss off successs of otp");
+                       window.location.href="/ajax/login_login";
                    }
              else
                     {
+                        console.log("Innnnsiiiideee Faaalllseee");
                         console.log(script.Message);
                         get_msg=script.Message;
-                        window.location.href="/ajax/otppage?Message="+get_msg
+                        console.log(script.Email);
+                        myemaill=script.Email;
+                        console.log(myemaill);
+                        window.location.href="/ajax/otppage?Message="+get_msg+"&MyEmail="+myemaill
+
+
+
+
                         
                       }
 

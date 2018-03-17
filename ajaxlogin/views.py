@@ -70,19 +70,26 @@ def signup(request):
 def otppage(request):
     if request.method == "GET":
         print('OOOOOOOOOOTTTTTTTTTTPPPPPPPP')
-        get_email = request.GET.get('Email')
+        myemail = request.GET.get('Email')
         mymsg =request.GET.get('Message')
 
-        return render(request, "otp1.html",{"Email": get_email,"Message": mymsg})
+        # myemail=request.GET.get('Emaaill')
+        if myemail is None:
+            print("Inssssiiiiideeeee Faaalllseee case IIIFFFFF")
+            femail=request.GET.get('MyEmail')
+            print("False caseeeeeee Emmmaaaailllll=====",femail)
+            myemail=femail
+            print("Assssssssssiiiignnnnnmmmeeennntttttt===",myemail)
+        return render(request, "otp1.html",{"Email": myemail,"Message": mymsg})
 
     elif request.method == "POST":
         myotp = request.POST.get('Otp')
-        myemail =request.POST.get('Email')
+        myemaill =request.POST.get('Email')
         print("My Otp========",myotp)
-        if Logins.objects.filter(email=myemail).exists():
+        if Logins.objects.filter(email=myemaill).exists():
 
             print("Inside ifffffffffff")
-            data1 = Logins.objects.get(email=myemail)
+            data1 = Logins.objects.get(email=myemaill)
             print("DDDDDDDDDDDDDDDDDDDAAAAATTTTAAAAAA111111",data1)
             data2 =New.objects.get(new=data1)
             dbotp =data2.otp
@@ -90,11 +97,15 @@ def otppage(request):
             print("MMMMMMMMMYYYYYYYYYYYOOOOTTTTTTPPPPPP",int(myotp))
             if int(myotp)==dbotp:
                 print("Inside Trrrrrrrrrrrruuuuuuuueeeeeeeeeeee")
+                del request.session['Email']
+                # print("Sesssionn Emmmaaillll=",get_email)
+                # request.session['Email'] = get_email
                 return JsonResponse({"Message": "success", "Success": True})
             else:
                 print("Inside Fallllllssssssseeeeeee")
                 msg = "Please enter correct otp"
-                return JsonResponse({"Message": msg, "Success": False})
+                print("Fallllseeee Emmmaailllll=====", myemaill)
+                return JsonResponse({"Message": msg, "Success": False,"Email":myemaill})
 
 
 
@@ -110,7 +121,39 @@ def home(request):
 
 @csrf_exempt
 def login_login(request):
-    return render(request, "Login.html")
+    if request.method == "GET":
+        # print("Innnnnsssiiiiiidddeee Lllllooogggiiinnnn viewwww  GGGETTT")
+        # mymsg = request.GET.get('Message')
+        # print("Alerrrrtttt messageeeee",mymsg)
+        return render(request, "Login1.html")
+
+    elif request.method == "POST":
+        print("Insiddeeeeee llooooogggiiinnn POOOOSSTTT")
+        myemail=request.POST.get('Email')
+        mypassword=request.POST.get('Password')
+        print("User entered Email=", myemail)
+        print("User entered Password=", mypassword)
+        data1=Logins.objects.get(email=myemail)
+        print(data1)
+        email=data1.email
+        pssword=data1.password
+        # data=Logins.objects.get(password=mypassword)
+
+        # data = Logins.objects.all()
+        # for i in data:
+        #     email = (i.email)
+        #     pssword = (i.password)
+        if email==myemail and pssword==mypassword:
+            print("Inside if checking username and password")
+            return JsonResponse({"Message": "success", "Success": True})
+        else:
+            print("Inside else incorrect detailssss")
+            msg="Please enter correct Details"
+            print("Messaaggeeeeee=",msg)
+            return JsonResponse({"Message": msg, "Success": False})
+
+
+
 
 
 @csrf_exempt
@@ -122,7 +165,11 @@ def auth(request):
             pssword = (i.password)
             user = (i.username)
             # decoded = jwt.decode(pssword, 'secret', algorithms='HS256')
-            #  email=(i.email)
+            #  email=(i.email)data = Logins.objects.all()
+        for i in data:
+            email = (i.email)
+            pssword = (i.password)
+            user = (i.username)
             no = (i.contactno)
         # user= data.username
         # pssword =data.password

@@ -1,4 +1,4 @@
-function click3() {
+function click4() {
     var get_email = document.getElementById('email').value;
 
     var get_user = document.getElementById('user').value;
