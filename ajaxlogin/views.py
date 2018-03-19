@@ -120,9 +120,13 @@ def home(request):
          encoded=request.GET.get('Token')
          decoded = jwt.decode(encoded, key, algorithms='HS256')
          print("Decodedddddddd Jsssooonnnn=",decoded)
-
-         # return render(request, "home1.html",{"Email":myemail,"Username":username,
-         #                                      "Contact_no":contactn})
+         Id=decoded['id']
+         data1 = Logins.objects.get(id=Id)
+         username=data1.username
+         email =data1.email
+         contactno=data1.contactno
+         return render(request, "home1.html",{"Email":email,"Username":username,
+                                              "Contact_no":contactno})
 
 
 @csrf_exempt

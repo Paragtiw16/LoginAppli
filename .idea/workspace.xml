@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62eb2ed5-6f79-49e8-95c5-607b67d423e1" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/Profile1.html" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/ajaxlogin/static/js/home.js" afterPath="$PROJECT_DIR$/ajaxlogin/static/js/profile.js" />
-      <change beforePath="$PROJECT_DIR$/ajaxlogin/static/js/login.js" afterPath="$PROJECT_DIR$/ajaxlogin/static/js/login.js" />
-      <change beforePath="$PROJECT_DIR$/ajaxlogin/urls.py" afterPath="$PROJECT_DIR$/ajaxlogin/urls.py" />
       <change beforePath="$PROJECT_DIR$/ajaxlogin/views.py" afterPath="$PROJECT_DIR$/ajaxlogin/views.py" />
       <change beforePath="$PROJECT_DIR$/db1.sqlite3" afterPath="$PROJECT_DIR$/db1.sqlite3" />
       <change beforePath="$PROJECT_DIR$/templates/home1.html" afterPath="$PROJECT_DIR$/templates/home1.html" />
@@ -23,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ajaxlogin/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+            <state relative-caret-position="342">
+              <caret line="127" column="79" lean-forward="true" selection-start-line="127" selection-start-column="79" selection-end-line="127" selection-end-column="79" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -39,7 +34,7 @@
         <entry file="file://$PROJECT_DIR$/ajaxlogin/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="144">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -75,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home1.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="home1.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/home1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="180">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -89,7 +84,7 @@
         <entry file="file://$PROJECT_DIR$/ajaxlogin/static/js/otp.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="366">
-              <caret line="35" column="98" lean-forward="true" selection-start-line="35" selection-start-column="77" selection-end-line="35" selection-end-column="98" />
+              <caret line="35" column="98" lean-forward="false" selection-start-line="35" selection-start-column="77" selection-end-line="35" selection-end-column="98" />
               <folding />
             </state>
           </provider>
@@ -99,7 +94,7 @@
         <entry file="file://$PROJECT_DIR$/templates/Login1.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
-              <caret line="7" column="75" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="7" selection-end-column="75" />
+              <caret line="7" column="75" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="7" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -109,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/ajaxlogin/static/js/login.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="265">
-              <caret line="25" column="61" lean-forward="true" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="61" />
+              <caret line="25" column="61" lean-forward="false" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -119,7 +114,7 @@
         <entry file="file://$PROJECT_DIR$/loginapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
-              <caret line="40" column="64" lean-forward="true" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="64" />
+              <caret line="40" column="64" lean-forward="false" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -181,8 +176,8 @@
         <option value="$PROJECT_DIR$/templates/Profile1.html" />
         <option value="$PROJECT_DIR$/ajaxlogin/static/js/profile.js" />
         <option value="$PROJECT_DIR$/ajaxlogin/static/js/login.js" />
-        <option value="$PROJECT_DIR$/templates/home1.html" />
         <option value="$PROJECT_DIR$/ajaxlogin/views.py" />
+        <option value="$PROJECT_DIR$/templates/home1.html" />
       </list>
     </option>
   </component>
@@ -649,7 +644,7 @@
     <entry file="file://$PROJECT_DIR$/ajaxlogin/static/js/otp.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
-          <caret line="35" column="98" lean-forward="true" selection-start-line="35" selection-start-column="77" selection-end-line="35" selection-end-column="98" />
+          <caret line="35" column="98" lean-forward="false" selection-start-line="35" selection-start-column="77" selection-end-line="35" selection-end-column="98" />
           <folding />
         </state>
       </provider>
@@ -665,7 +660,7 @@
     <entry file="file://$PROJECT_DIR$/ajaxlogin/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -673,15 +668,7 @@
     <entry file="file://$PROJECT_DIR$/templates/Login1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="7" column="75" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="7" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <caret line="7" column="75" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="7" selection-end-column="75" />
           <folding />
         </state>
       </provider>
@@ -697,7 +684,7 @@
     <entry file="file://$PROJECT_DIR$/loginapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="40" column="64" lean-forward="true" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="64" />
+          <caret line="40" column="64" lean-forward="false" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="64" />
           <folding />
         </state>
       </provider>
@@ -705,18 +692,26 @@
     <entry file="file://$PROJECT_DIR$/ajaxlogin/static/js/login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
-          <caret line="25" column="61" lean-forward="true" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="61" />
+          <caret line="25" column="61" lean-forward="false" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ajaxlogin/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+        <state relative-caret-position="342">
+          <caret line="127" column="79" lean-forward="true" selection-start-line="127" selection-start-column="79" selection-end-line="127" selection-end-column="79" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
