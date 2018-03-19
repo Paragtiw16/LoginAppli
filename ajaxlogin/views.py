@@ -1,3 +1,4 @@
+import jwt
 from django.http import request
 from django.shortcuts import render, render_to_response
 
@@ -115,14 +116,20 @@ def home(request):
     if request.method == "GET":
         # print('OOOOOOOOOOTTTTTTTTTTPPPPPPPP')
          print("Insideeeeeeeeeee HOOOOOOOOMEEEEEE")
+         key = 'secret'
+         encoded=request.GET.get('Token')
+         decoded = jwt.decode(encoded, key, algorithms='HS256')
+         print("Decodedddddddd Jsssooonnnn=",decoded)
 
-         return render(request, "home1.html")
+         # return render(request, "home1.html",{"Email":myemail,"Username":username,
+         #                                      "Contact_no":contactn})
 
 
 @csrf_exempt
 def login_login(request):
+    print("Checking loginnnn Conditionnnnnn")
     if request.method == "GET":
-        # print("Innnnnsssiiiiiidddeee Lllllooogggiiinnnn viewwww  GGGETTT")
+        print("Innnnnsssiiiiiidddeee Lllllooogggiiinnnn   GGGETTT")
         # mymsg = request.GET.get('Message')
         # print("Alerrrrtttt messageeeee",mymsg)
         return render(request, "Login1.html")
@@ -133,54 +140,70 @@ def login_login(request):
         mypassword=request.POST.get('Password')
         print("User entered Email=", myemail)
         print("User entered Password=", mypassword)
-        data1=Logins.objects.get(email=myemail)
-        print(data1)
-        email=data1.email
-        pssword=data1.password
-        # data=Logins.objects.get(password=mypassword)
+        flag=Logins.objects.filter(email=(myemail)).exists()
+        if flag==True:
+                print("Insideee Flaggggggggggggg")
 
-        # data = Logins.objects.all()
-        # for i in data:
-        #     email = (i.email)
-        #     pssword = (i.password)
-        if email==myemail and pssword==mypassword:
-            print("Inside if checking username and password")
-            return JsonResponse({"Message": "success", "Success": True})
+                data1=Logins.objects.get(email=myemail)
+
+                email=data1.email
+                print("Database email=", email)
+                pssword=data1.password
+                print("Database password=", pssword)
+                id=data1.id
+
+
+                if   pssword==mypassword:
+
+                    print("MyEmail==",myemail)
+                    key = 'secret'
+                    encoded=jwt.encode({'email':myemail,'Id':id},key,algorithm='HS256')
+
+                    print("Inside if checking username and password")
+                    # request.session['Email'] = myemail
+                    return JsonResponse({"Message": "success", "Success": True,
+                                         "Encoded":"encoded"})
+                else:
+                    print("Inside else incorrect detailssss")
+                    msg="Please enter correct Details"
+                    print("Messaaggeeeeee=",msg)
+                    return JsonResponse({"Message": msg, "Success": False})
+
         else:
             print("Inside else incorrect detailssss")
-            msg="Please enter correct Details"
-            print("Messaaggeeeeee=",msg)
+            msg = "Please enter correct Details"
+            print("Messaaggeeeeee=", msg)
             return JsonResponse({"Message": msg, "Success": False})
 
 
 
 
 
-@csrf_exempt
-def auth(request):
-    if request.method == "POST":
-        data = Logins.objects.all()
-        for i in data:
-            email = (i.email)
-            pssword = (i.password)
-            user = (i.username)
-            # decoded = jwt.decode(pssword, 'secret', algorithms='HS256')
-            #  email=(i.email)data = Logins.objects.all()
-        for i in data:
-            email = (i.email)
-            pssword = (i.password)
-            user = (i.username)
-            no = (i.contactno)
-        # user= data.username
-        # pssword =data.password
-        # email=data.email
-        get_email = request.POST.get('Email')
-        get_pswd = request.POST.get('Password')
-        # get_number=request.POST.get(no)
-        if email == get_email and pssword == get_pswd:
-            print("true")
-            return render(request, "home1.html", {"Username": user, "Email": email,
-                                                  "Contact_no": no})
-        else:
-            msg = "Please enter Correct Details"
-            return render(request, "Login1.html", {"Message": msg})
+# @csrf_exempt
+# def auth(request):
+#     if request.method == "POST":
+#         data = Logins.objects.all()
+#         for i in data:
+#             email = (i.email)
+#             pssword = (i.password)
+#             user = (i.username)
+#             # decoded = jwt.decode(pssword, 'secret', algorithms='HS256')
+#             #  email=(i.email)data = Logins.objects.all()
+#         for i in data:
+#             email = (i.email)
+#             pssword = (i.password)
+#             user = (i.username)
+#             no = (i.contactno)
+#         # user= data.username
+#         # pssword =data.password
+#         # email=data.email
+#         get_email = request.POST.get('Email')
+#         get_pswd = request.POST.get('Password')
+#         # get_number=request.POST.get(no)
+#         if email == get_email and pssword == get_pswd:
+#             print("true")
+#             return render(request, "home1.html", {"Username": user, "Email": email,
+#                                                   "Contact_no": no})
+#         else:
+#             msg = "Please enter Correct Details"
+#             return render(request, "Login1.html", {"Message": msg})

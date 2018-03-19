@@ -1,13 +1,9 @@
 function click4() {
-    var get_email = document.getElementById('email').value;
+    var name = document.getElementById('uname').value;
+    var email = document.getElementById('email').value;
+    var number = document.getElementById('number').value;
 
-    var get_user = document.getElementById('user').value;
-
-     var get_cno = document.getElementById('cno').value;
-
-
-    alert(otp);
-    alert(get_email);
+    alert(name);
 
     $.ajax({
         url: '/login_login/',

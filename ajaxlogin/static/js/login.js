@@ -17,17 +17,20 @@ function click3() {
                     console.log(check);
                     alert(check);
                     alert(check.Success);
+                    token=check.Encoded;
              if(check.Success==true)
                    {
+
                        console.log("Insideeeee succcessss offf LLLooogginnn");
-                       window.location.href="/ajax/home";
+                       // myemail=check.Email
+                       window.location.href="/ajax/home?Token="+token;
                    }
              else
                     {
                         console.log("Innnnsiiiideee Faaalllseee of login  jssss");
                         console.log(check.Message);
-                        get_msg=check.Message;
-                        alert(get_msg)
+                        alert(check.Message);
+
                         window.location.href="/ajax/login_login";
 
 
