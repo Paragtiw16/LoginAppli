@@ -1,0 +1,27 @@
+<html>
+<head>
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+    </head>
+ {% load staticfiles %}
+ <script type="text/javascript" src="{% static 'js/save.js' %} "></script>
+<body>
+<form>
+
+      <h1>Welcome to Home Page</h1>
+     Email:<input type="email" id="email" value="{{ Email }} disabled"><br/>
+     Username:<input type="text" id="user" value="{{ Username }}"><br/>
+     Contact_NO:<input type="number" id="cno" value="{{ Contact_no }}"><br/>
+                <input type="hidden" id="token" value="{{ Encoded }}"><br/>
+
+      <input type="edit" onclick="click5()"/>
+
+
+
+
+
+  </form>
+
+</body>
+</html>

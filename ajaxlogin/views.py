@@ -1,3 +1,5 @@
+import json
+
 import jwt
 from django.http import request
 from django.shortcuts import render, render_to_response
@@ -109,8 +111,6 @@ def otppage(request):
                 return JsonResponse({"Message": msg, "Success": False,"Email":myemaill})
 
 
-
-
 @csrf_exempt
 def home(request):
     if request.method == "GET":
@@ -118,15 +118,25 @@ def home(request):
          print("Insideeeeeeeeeee HOOOOOOOOMEEEEEE")
          key = 'secret'
          encoded=request.GET.get('Token')
+         print("getting encoding value=",encoded)
          decoded = jwt.decode(encoded, key, algorithms='HS256')
+         encoded = jwt.encode(decoded, key, algorithm='HS256')
+
          print("Decodedddddddd Jsssooonnnn=",decoded)
-         Id=decoded['id']
-         data1 = Logins.objects.get(id=Id)
+         ID=decoded['Id']
+         print("Idddddd=====",ID)
+         try:
+
+             data1 = Logins.objects.get(id=ID)
+         except Exception, e:
+               print("Apna  Error=", str(e))
+         print(data1)
          username=data1.username
          email =data1.email
          contactno=data1.contactno
+         encoded = jwt.encode(decoded, key, algorithm='HS256')
          return render(request, "home1.html",{"Email":email,"Username":username,
-                                              "Contact_no":contactno})
+                                              "Contact_no":contactno,"Encoded":encoded})
 
 
 @csrf_exempt
@@ -162,11 +172,10 @@ def login_login(request):
                     print("MyEmail==",myemail)
                     key = 'secret'
                     encoded=jwt.encode({'email':myemail,'Id':id},key,algorithm='HS256')
-
-                    print("Inside if checking username and password")
-                    # request.session['Email'] = myemail
+                    # request.session['Encoded'] =encoded
+                    print("afterrr ennncoooddingggg")
                     return JsonResponse({"Message": "success", "Success": True,
-                                         "Encoded":"encoded"})
+                                         "Encoded":encoded})
                 else:
                     print("Inside else incorrect detailssss")
                     msg="Please enter correct Details"
@@ -183,31 +192,55 @@ def login_login(request):
 
 
 
-# @csrf_exempt
-# def auth(request):
-#     if request.method == "POST":
-#         data = Logins.objects.all()
-#         for i in data:
-#             email = (i.email)
-#             pssword = (i.password)
-#             user = (i.username)
-#             # decoded = jwt.decode(pssword, 'secret', algorithms='HS256')
-#             #  email=(i.email)data = Logins.objects.all()
-#         for i in data:
-#             email = (i.email)
-#             pssword = (i.password)
-#             user = (i.username)
-#             no = (i.contactno)
-#         # user= data.username
-#         # pssword =data.password
-#         # email=data.email
-#         get_email = request.POST.get('Email')
-#         get_pswd = request.POST.get('Password')
-#         # get_number=request.POST.get(no)
-#         if email == get_email and pssword == get_pswd:
-#             print("true")
-#             return render(request, "home1.html", {"Username": user, "Email": email,
-#                                                   "Contact_no": no})
-#         else:
-#             msg = "Please enter Correct Details"
-#             return render(request, "Login1.html", {"Message": msg})
+@csrf_exempt
+def edit(request):
+    if request.method == "GET":
+        print("Inside Ediiitttttt GETTTT")
+        encoded = request.GET.get('Token')
+
+        key = 'secret'
+        decoded = jwt.decode(encoded, key, algorithms='HS256')
+        print("Decodedddddddd Jsssooonnnn inside Edit get=", decoded)
+        ID = decoded['Id']
+        print("Idddddd=====", ID)
+        try:
+
+            data1 = Logins.objects.get(id=ID)
+        except Exception, e:
+            print("Apna  Error=", str(e))
+        print(data1)
+        username = data1.username
+        contactno = data1.contactno
+        encoded = jwt.encode(decoded, key, algorithm='HS256')
+        print("Enddd off Edittt GEEETTTTTT")
+        return JsonResponse ({"Username": username,"Contact_no": contactno,
+                              "Encoded": encoded,"Message": "success", "Success": True})
+
+    elif request.method == "POST":
+        print("inside signup POST Method")
+        get_user = request.POST.get('User')
+        get_contact = request.POST.get('Contact')
+        get_email = request.POST.get('Email')
+        token = request.POST.get('Encoded')
+        print("get_uname ", get_user)
+        print("get_email ", get_email)
+        key = 'secret'
+        decoded = jwt.decode(token, key, algorithms='HS256')
+        print("Decodedddddddd Jsssooonnnn=", decoded)
+        ID = decoded['Id']
+        print("Idddddd=====", ID)
+        try:
+
+            data1 = Logins.objects.get(id=ID)
+        except Exception, e:
+            print("Apna  Error=", str(e))
+        print(data1)
+        data1.username=get_user
+        data1.email=get_email
+        data1.contactno=get_contact
+        data1.save()
+        msg = "Data has been saved"
+        print("Messaaggeeeeee=", msg)
+        encoded = jwt.encode(decoded, key, algorithm='HS256')
+        return JsonResponse({"Message": "success", "Success": True,"Message": msg,
+                             "Token": encoded})
